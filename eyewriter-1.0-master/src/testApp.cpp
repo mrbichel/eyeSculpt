@@ -127,7 +127,7 @@ void testApp::draw(){
 	if (mode == MODE_TYPING)			typeScene.draw();
 	if (mode == MODE_PONG)				ponger.draw();
     if (mode == MODE_OSC)               oscScene.draw();
-    if (mode == MODE_MOUSE)             mouseScene.draw(); 
+    if (mode == MODE_MOUSE)             mouseScene.draw();
 	
 		
 	// draw a green dot to see how good the tracking is:
@@ -148,17 +148,28 @@ void testApp::keyPressed(int key){
 	
 	switch (key){
 			
-		case	OF_KEY_RETURN:
-			mode ++;
-			mode %= 8; // number of modes;
-			break;
-	
-		case	'f':
+		//case	OF_KEY_RETURN:
+		//	mode ++;
+		//	mode %= 8; // number of modes;
+		//	break;
+        
+        case '1':
+            mode = MODE_TRACKING;
+            break;
+            
+        case '2':
+            mode = MODE_CALIBRATING;
+            break;
+        
+        case '3':
+            mode = MODE_OSC;
+            break;
+        
+            
 		case	'F':
 			ofToggleFullscreen();
 			break;
             
-        case	'm':
 		case	'M':
 			bMouseSimulation = !bMouseSimulation;
 			break;

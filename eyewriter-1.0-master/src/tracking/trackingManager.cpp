@@ -227,8 +227,8 @@ void trackingManager::draw(){
 	ofSetColor(255, 255, 255);
 	ofDrawBitmapString("key commands: ", 720,550);
 	
-	ofDrawBitmapString("          (f) - toggle fullscreen",			700,550+30);
-	ofDrawBitmapString("     (return) - change mode",	700,550+50);
+	ofDrawBitmapString("          (F) - toggle fullscreen",			700,550+30);
+	ofDrawBitmapString("     (1, 2, 3) - change mode",	700,550+50);
 	ofDrawBitmapString("        (esc) - exit",			700,550+70);
 	
     if (panel.getSelectedPanelName() == "button settings "){

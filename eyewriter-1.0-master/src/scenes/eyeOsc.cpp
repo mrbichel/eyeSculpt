@@ -20,9 +20,18 @@ void eyeOsc::setup(){
 	sender.setup( HOST, PORT );
     
 }
+
+float constrain(float x, float low, float high) {
+    return x < low ? low : x > high ? high : x;
+}
+
 void eyeOsc::update(float eyeX, float eyeY){
-    x = eyeX;
-    y = eyeY;
+    x = ofMap(eyeX, 0, ofGetWidth(), 0., 1.);
+    
+    y = ofMap(eyeY, 0, ofGetHeight(), 0., 1.);
+    
+    x = constrain(x, 0., 1.);
+    y = constrain(y, 0., 1.);
     
     ofxOscMessage mX;
 	mX.setAddress( "/eye/pos/x" );
@@ -33,7 +42,6 @@ void eyeOsc::update(float eyeX, float eyeY){
 	mY.setAddress( "/eye/pos/y" );
 	mY.addFloatArg( y );
 	sender.sendMessage( mY );
-    //cout << "x: " << x << " y: " << y << endl;
     
     //need to add message for eye BLINK
 }
@@ -41,13 +49,14 @@ void eyeOsc::draw(){
     
     ofFill();
     ofSetColor(255,255,255);
-    ofDrawBitmapString( ">>> eyeOSC <<<", 10, 20 );
+    ofDrawBitmapString( "OSC", 20, 40 );
    	string info;
-	info = "sending osc messages to: " + string( HOST ) + " on port: " + ofToString( PORT );
-	ofDrawBitmapString( info, 10, 40 );
+	info = "Sending osc messages to: " + string( HOST ) + " on port: " + ofToString( PORT );
+	ofDrawBitmapString( info, 20, 60 );
 
-    ofDrawBitmapString( "/eye/pos/x " + ofToString(x), x + 50, y );
-    ofDrawBitmapString( "/eye/pos/y " + ofToString(y), x, y - 50 );
+    ofDrawBitmapString( "/eye/pos/x " + ofToString(x), 20, 100 );
+    ofDrawBitmapString( "/eye/pos/y " + ofToString(y), 20, 120 );
+    
 }
 
 void eyeOsc::dragEvent(ofDragInfo dragInfo){
