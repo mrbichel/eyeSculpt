@@ -25,8 +25,8 @@ public:
     
     ofTrueTypeFont		font;
     
-    int x;
-    int y;
+    float x;
+    float y;
     
     ofxOscSender    sender;
 

@@ -26,12 +26,12 @@ void eyeOsc::update(float eyeX, float eyeY){
     
     ofxOscMessage mX;
 	mX.setAddress( "/eye/pos/x" );
-	mX.addIntArg( x );
+	mX.addFloatArg( x );
 	sender.sendMessage( mX );
     
     ofxOscMessage mY;
 	mY.setAddress( "/eye/pos/y" );
-	mY.addIntArg( y );
+	mY.addFloatArg( y );
 	sender.sendMessage( mY );
     //cout << "x: " << x << " y: " << y << endl;
     
